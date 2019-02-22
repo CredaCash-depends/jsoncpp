@@ -301,7 +301,7 @@ public:
    * \param indentation Each level will be indented by this amount extra.
    */
   StyledStreamWriter(String indentation = "\t");
-  ~StyledStreamWriter() = default;
+  virtual ~StyledStreamWriter() = default;
 
 public:
   /** \brief Serialize a Value in <a HREF="http://www.json.org">JSON</a> format.
@@ -312,8 +312,8 @@ public:
    */
   void write(OStream& out, const Value& root);
 
-private:
-  void writeValue(const Value& value);
+protected:
+  virtual void writeValue(const Value& value);
   void writeArrayValue(const Value& value);
   bool isMultilineArray(const Value& value);
   void pushValue(const String& value);
